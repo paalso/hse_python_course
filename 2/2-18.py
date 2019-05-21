@@ -1,0 +1,27 @@
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/SQALl/skol-ko-sovpadaiet-chisiel
+
+# Сколько совпадает чисел
+# Даны три целых числа. Определите, сколько среди них совпадающих. 
+# Программа должна вывести одно из чисел: 3 (если все совпадают), 2 (если два совпадает) 
+# или 0 (если все числа различны).
+
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+if a > b:
+    (a, b) = (b, a)
+
+if a > c:
+    (a, c) = (c, a)
+
+if b > c:
+    (b, c) = (c, b)
+
+if a == c:
+    print(3)
+elif a == b or b == c:
+    print(2)
+else:
+    print(0)
