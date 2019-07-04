@@ -1,4 +1,4 @@
-https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/0YL1I/kolichiestvo-palindromov/submission
+##https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/0YL1I/kolichiestvo-palindromov/submission
 
 ##Количество палиндромов
 ##Назовем число палиндромом, если оно не меняется при перестановке его цифр в
