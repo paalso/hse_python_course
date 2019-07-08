@@ -1,10 +1,12 @@
-def copeeks(sum):
-    return int(sum * 100) % 100
-
 P = int(input())
 X = int(input())
 Y = int(input())
+K = int(input())
 
-S = (X + Y / 100) * (1 + P / 100)
+S = 100 * X + Y
+P += 100
 
-print(int(S), copeeks(S))
+for k in range(K):
+    S = S * P // 100
+
+print(S // 100, S % 100)
