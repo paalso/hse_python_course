@@ -1,10 +1,10 @@
-s = input()
 c = 'f'
+s = input()
 
 first = s.find(c)
 if first > -1:
-    print(first, end = ' ')
+    print(first, end=' ')
 
-    last = s.find(c, -1, first)
-    if last != first:
-        print(last)
+last = len(s) - 1 - s[-1::-1].find(c)
+if last != first:
+    print(last)
