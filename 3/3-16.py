@@ -1,16 +1,17 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/dvFuJ/udalieniie-fraghmienta/submission
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/RIZCj/dublirovaniie-fraghmienta
 
-# Удаление фрагмента
-# Дана строка, в которой буква h встречается минимум два раза.Удалите из этой
-# строки первое и последнее вхождение буквы h,а также все символы, находящиеся
-# между ними.
+# Дублирование фрагмента
+# Дана строка, в которой буква h встречается как минимум два раза. Выведите
+# измененную строку: повторите последовательность символов, заключенную между
+# первым и последним появлением буквы h два раза (сами буквы h не входят в
+# повторяемый фрагмент, т. е. их повторять не надо).
 
 c = 'h'
+
 s = input()
 l = len(s)
 
 first = s.find(c)
-
 last = l - 1 - s[-1::-1].find(c)
-
-print(s[:first] + s[last + 1:])
+middle = s[first + 1:last]
+print(s[:first + 1] + middle + middle + s[last:])
