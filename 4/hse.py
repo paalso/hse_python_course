@@ -1,10 +1,18 @@
-c = 'f'
-s = input()
+def IsPointInCircle(x, y, xc, yc, r):
+    return (x - xc) ** 2 + (y - yc) ** 2 <= r ** 2
 
-first = s.find(c)
-if first > -1:
-    print(first, end=' ')
 
-last = len(s) - 1 - s[-1::-1].find(c)
-if last != first:
-    print(last)
+def PrintAnswer(predicate, yesAnswer="YES", noAnswer="NO"):
+    if(predicate):
+        print(yesAnswer)
+    else:
+        print(noAnswer)
+
+
+x = float(input())
+y = float(input())
+xc = float(input())
+yc = float(input())
+r = float(input())
+
+PrintAnswer(IsPointInCircle(x, y, xc, yc, r))
