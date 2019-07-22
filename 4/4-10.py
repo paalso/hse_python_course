@@ -1,3 +1,5 @@
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/ktpvw/provierka-chisla-na-prostotu
+
 # Проверка числа на простоту
 # Дано натуральное число n>1. Проверьте, является ли оно простым. Программа
 # должна вывести слово YES, если число простое и NO, если число составное.
