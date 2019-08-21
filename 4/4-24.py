@@ -5,21 +5,25 @@
 # целых чисел выводит их в обратном порядке. Использовать массив для хранения
 # последовательности не разрешается.
 
-was_sqrt = False
 
-
-def print_sqrs():
-    global was_sqrt
+def print_sqrs(counter):
     n = int(input())
     if n == 0:
-        return 0
-    print_sqrs()
+        print(f"counter in: {counter}")
+        return counter
+
+    was_sqrt = False
     q = int(n ** 0.5)
     if q * q == n:
+        was_sqrt = True
+
+    print_sqrs(counter + int(was_sqrt))
+
+    if was_sqrt:
         print(n, end=' ')
-        was_sqrt = was_sqrt or True
 
 
-print_sqrs()
-if not was_sqrt:
+x = print_sqrs(0)
+print(f"counter out: {x}")
+if x == 0:
     print(0)
