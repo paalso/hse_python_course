@@ -17,7 +17,7 @@ def print_sqrs(counter):
     if q * q == n:
         was_sqrt = True
 
-    print_sqrs(counter + int(was_sqrt))
+    return print_sqrs(counter + int(was_sqrt))
 
     if was_sqrt:
         print(n, end=' ')
