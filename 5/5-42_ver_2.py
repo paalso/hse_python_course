@@ -8,20 +8,22 @@
 # использовать нельзя, задачу нужно выполнить за один проход по списку.
 # Распечатайте полученный список.
 
+def find_non_zero(data, start):
+    for i in range(start, len(data)):
+        if data[i] != 0:
+            return i
+    return -1
+
+
 data = list(map(int, input().split()))
 
 size = len(data)
-zeros = 0
-for i in range(size):
-    if data[i] == 0:
-        zeros += 1
-        for j in range(i, size - zeros):
-            data[j] = data[j + 1]
-            data[size - zeros] = 0
-        print(*data)
-    if i == size - zeros - 1:
+zero_index = -1
+while True:
+    zero_index = data.index(0, zero_index + 1)
+    index = find_non_zero(data, zero_index + 1)
+    if index == -1:
         break
+    data[zero_index], data[index] = data[index], data[zero_index]
 
-
-print("-----")
 print(*data)

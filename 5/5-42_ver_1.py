@@ -10,18 +10,11 @@
 
 data = list(map(int, input().split()))
 
-size = len(data)
 zeros = 0
-for i in range(size):
-    if data[i] == 0:
+for el in data:
+    if el != 0:
+        print(el, end=' ')
+    else:
         zeros += 1
-        for j in range(i, size - zeros):
-            data[j] = data[j + 1]
-            data[size - zeros] = 0
-        print(*data)
-    if i == size - zeros - 1:
-        break
 
-
-print("-----")
-print(*data)
+print('0 ' * zeros)
