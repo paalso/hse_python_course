@@ -9,7 +9,7 @@
 # одновременно.
 
 
-def find_suitable_size(data, size):
+def find_first_suitable_size(data, size):
     if size <= data[0]:
         return 0
     if size > data[len(data) - 1]:
@@ -19,16 +19,29 @@ def find_suitable_size(data, size):
             return k
 
 
+def find_next_index(data, current_index, step=3):
+    current_size = data[current_index]
+    for i in range(current_index + 1, len(data), 1):
+        if data[i] >= current_size + step:
+            return i
+    return -1
+
+
 size = int(input())
 data = list(map(int, input().split()))
 data.sort()
 
-k = find_suitable_size(data, size)
+k = find_first_suitable_size(data, size)
+
 if k < 0:
     print(0)
 else:
     counter = 1
-    while(k < len(data) - 1 and data[k] + 3 <= data[k + 1]):
-        k += 1
+    while(True):
+        next_index = find_next_index(data, k)
+        if next_index < 0:
+            break
         counter += 1
+        k = next_index
+
     print(counter)
