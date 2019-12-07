@@ -1,24 +1,28 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/0WHfG/riezul-taty-olimpiady
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/ozMKp/kolichiestvo-pobieditieliei-po-klassam
 
-# Результаты олимпиады
-# В олимпиаде участвовало N человек. Каждый получил определенное количество
-# баллов, при этом оказалось, что у всех участников разное число баллов.
-# Упорядочите список участников олимпиады в порядке убывания набранных баллов.
+# Количество победителей по классам
 
+# В условиях предыдущей задачи определите количество школьников,
+# ставших победителями в каждом классе. Победителями объявляются все, кто
+# набрал наибольшее число баллов по данному классу. Гарантируется, что в каждом
+# классе был хотя бы один участник.
 
-class Student:
-    def __init__(self, name, grade):
-        self.name = name
-        self.grade = grade
+fin = open('input.txt', 'r', encoding='utf-8')
 
+grades_list = []
+max_grades = {9: 0, 10: 0, 11: 0}
+max_grades_qty = {9: 0, 10: 0, 11: 0}
 
-data = []
-total_students = int(input())
-for i in range(total_students):
-    name, grade = input().split()
-    data.append(Student(name, int(grade)))
+with open('input.txt', 'r', encoding='utf-8') as fin:
+    for line in fin:
+        dataline = line.split()
+        form, grade = int(dataline[2]), int(dataline[3])
+        grades_list.append((form, grade))
+        if grade > max_grades[form]:
+            max_grades[form] = grade
 
-data.sort(key=lambda student: student.grade, reverse=True)
+for form, grade in grades_list:
+    if grade == max_grades[form]:
+        max_grades_qty[form] += 1
 
-for student in data:
-    print(student.name)
+print(*max_grades_qty.values())
