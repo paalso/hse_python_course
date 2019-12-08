@@ -1,25 +1,42 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/7eUae/taksi
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/sMIcT/siemiprotsientnyi-bar-ier
 
-# Такси
+# Семипроцентный барьер
 
-# После затянувшегося совещания директор фирмы решил заказать такси, чтобы
-# развезти сотрудников по домам. Он заказал N машин — ровно столько, сколько у
-# него сотрудников. Однако когда они подъехали, оказалось, что у каждого
-# водителя такси свой тариф за 1 километр.
-# Директор знает, какому сотруднику сколько километров от работы до дома
-# (к сожалению, все сотрудники живут в разных направлениях, поэтому нельзя
-# отправить двух сотрудников на одной машине). Теперь директор хочет
-# определить, сколько придется заплатить за перевозку всех сотрудников.
-# Естественно, директор хочет заплатить как можно меньшую сумму.
+# Дан список партий и список голосов избирателей. Выведите список партий,
+# которые попадут в Государственную Думу.
 
-distances = list(map(int, input().split()))
-prices = list(map(int, input().split()))
+# В Государственную Думу Федерального Собрания Российской Федерации выборы
+# производятся по партийным спискам. Каждый избиратель указывает одну партию,
+# за которую он отдает свой голос. В Государственную Думу попадают партии,
+# которые набрали не менее 7% от числа голосов избирателей.
+# Дан список партий и список голосов избирателей. Выведите список партий,
+# которые попадут в Государственную Думу.
 
-distances.sort()
-prices.sort(reverse=True)
+ELECTORAL_THRESHOLD = 0.07
 
-total_sum = 0
-for i in range(len(prices)):
-    total_sum += distances[i] * prices[i]
+fin = open('input.txt', 'r', encoding='utf8')
 
-print(total_sum)
+fin.readline()  # пропускаем 'PARTIES:'
+
+votes_by_party = {}
+total_votes = 0
+
+for line in fin:
+    line = line.rstrip()
+    if line == 'VOTES:':
+        break
+    votes_by_party[line] = 0
+
+
+for line in fin:
+    votes_by_party[line.rstrip()] += 1
+    total_votes += 1
+
+fin.close()
+
+passed_parties = []
+for party, votes in votes_by_party.items():
+    if votes / total_votes >= ELECTORAL_THRESHOLD:
+        passed_parties.append(party)
+
+print('\n'.join(passed_parties))
