@@ -1,4 +1,4 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/7886R/szhatiie-spiska
+﻿# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/7886R/szhatiie-spiska
 
 # Сжатие списка
 
@@ -7,6 +7,8 @@
 # часть. Порядок ненулевых элементов изменять нельзя, дополнительный список
 # использовать нельзя, задачу нужно выполнить за один проход по списку.
 # Распечатайте полученный список.
+
+# true version
 
 def find_non_zero(data, start):
     for i in range(start, len(data)):
