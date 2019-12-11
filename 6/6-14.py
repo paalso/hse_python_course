@@ -3,45 +3,33 @@
 # Проходной балл
 
 
-def check_for_over_minimal(scores, excluding_score=40):
-    for score in scores:
-        if score < excluding_score:
-            return False
-    return True
+def find_prev_bigger_element(decreasing_list, index):
+    for i in range(index - 1, -1, -1):
+        if i >= 0 and decreasing_list[i] > decreasing_list[index]:
+            return decreasing_list[i]
+    return 1
 
 
 def get_passing_score(filename):
-    fin = open(filename, 'r', encoding='utf8')
+    with open(filename, 'r', encoding='utf8') as fin:
+        passed_qty = int(fin.readline())   # количество мест
 
-    passed_qty = int(fin.readline())
+        scores_sums = []
+        for line in fin:
+            scores = list(map(int, line.split()[-3:]))
+            if all([el >= 40 for el in scores]):
+                scores_sums.append(sum(scores))
 
-    scores_sums = []
-    for line in fin:
-        dataline = line.split()
-        scores = list(map(int, dataline[-3:]))
-        if check_for_over_minimal(scores):
-            scores_sums.append(sum(scores))
-    fin.close()
-
-    students_got = len(scores_sums)
-    if passed_qty >= students_got:
-        return 0
+    if passed_qty >= len(scores_sums):  # зачислены все абитуриенты,
+        return 0                        # не имеющие неуд
 
     scores_sums.sort(reverse=True)
     passing_score = scores_sums[passed_qty - 1]
     if scores_sums[passed_qty] < passing_score:
         return passing_score
 
-    i = passed_qty - 1
-    while i > 1 and scores_sums[i - 1] == scores_sums[i]:
-        i -= 1
-
-    if i >= 1:
-        return scores_sums[i - 1]
-
-    return 1
+    return find_prev_bigger_element(scores_sums, passed_qty - 1)
 
 
 filename = 'input.txt'
-with open('output.txt', 'w', encoding='utf8') as fout:
-    print(get_passing_score(filename), file=fout)
+print(get_passing_score(filename))

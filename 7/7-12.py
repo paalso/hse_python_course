@@ -18,6 +18,7 @@
 
 
 def process_phone(text):
+    DEFAULT_CODE = '495'
     symbols_to_del = ('-', '(', ')')
     for symbol in symbols_to_del:
         text = text.replace(symbol, '')
@@ -27,7 +28,7 @@ def process_phone(text):
     elif text[0] == '8':
         phone_number = text[1:4], text[4:]
     else:
-        phone_number = '495', text
+        phone_number = DEFAULT_CODE, text
     return phone_number
 
 
