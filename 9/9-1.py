@@ -1,3 +1,8 @@
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/albda/klass
+
+# Класс
+
+
 from sys import stdin
 from copy import deepcopy
 

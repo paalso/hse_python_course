@@ -1,7 +1,7 @@
 ## Coursera : Higher School of Economics
 ## [Основы программирования на Python](https://www.coursera.org/learn/python-osnovy-programmirovaniya/)
 
-#### План [Курса](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/welcome)
+#### [План Курса](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/welcome)
 [1. Целые числа, ввод-вывод, простые операции со строками](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/1)
 [2. Условный оператор и цикл while](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/2)
 [3. Вещественные числа](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/3)
