@@ -20,12 +20,15 @@ with open('input.txt', 'r') as fin:
     for i in range(K):
         strikes_data.append(tuple(map(int, fin.readline().split())))
 
-saturdays = set(range(6, N + 1, 7))
-sundays = set(range(7, N + 1, 7))
-weekends = saturdays | sundays
+days = set(range(1, N + 1))
+weekends = set(filter(lambda n: n % 7 == 6 or n % 7 == 0, days))
+days -= weekends
 strikes_days = set()
 
 for i in range(K):
-    strikes_days |= set(range(strikes_data[i][0], N + 1, strikes_data[i][1]))
+    strikes_days |= set(
+        filter(
+            lambda n: n >= strikes_data[i][0] and (n - strikes_data[i][0]) %
+            strikes_data[i][1] == 0, days))
 
-print(len(strikes_days - weekends))
+print(len(strikes_days))

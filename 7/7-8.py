@@ -11,20 +11,29 @@
 # при ответе учитывает все предыдущие вопросы Беатрисы и свои ответы на них, то
 # есть множество возможных задуманных чисел уменьшается.
 
-possible = set()
-
 with open('input.txt', 'r') as fin:
     maximum = int(fin.readline())
+    possible = set(range(1, maximum + 1))
+
     while True:
         dataline = fin.readline().rstrip()
         if dataline == 'HELP':
             break
 
-        tmp_set = set(map(int, dataline.split()))
+        possible_set_1 = set(map(int, dataline.split()))
+        possible_set_2 = possible - possible_set_1
 
-        if fin.readline().rstrip() == 'YES':
-            possible |= tmp_set
+        len1 = len(possible_set_1)
+        len2 = len(possible_set_2)
+
+        if len1 <= len2:
+            print('NO')
+            possible -vvvvvvvvv= possible_set_1
+        elif len1 > len2:
+            print('YES')
+            possible = possible_set_1
         else:
-            possible -= tmp_set
+            print('NO')
 
-print(*possible)
+
+print(*sorted(possible))
