@@ -1,30 +1,22 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/7
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/FdeT5/vybory-priezidienta
 
-# Частотный анализ
+# Выборы Президента
 
-# Дан текст. Выведите все слова, встречающиеся в тексте, по одному на каждую
-# строку. Слова должны быть отсортированы по убыванию их количества появления в
-# тексте, а при одинаковой частоте появления — в лексикографическом порядке.
+# В выборах Президента Российской Федерации побеждает кандидат, набравший свыше
+# половины числа голосов избирателей. Если такого кандидата нет, то во второй
+# тур выборов выходят два кандидата, набравших наибольшее число голосов.
 
-votes_by_candidate = {}
-total_votes = 0
-with open('input.txt', encoding='utf8') as finput:
-    for line in finput:
-        line = line.rstrip()
-        votes_by_candidate[line] = votes_by_candidate.get(line, 0) + 1
-        total_votes += 1
+frequency_dict = {}
+with open('input.txt') as finput:
+    words = finput.read().split()
 
-maximal_votes = max(votes_by_candidate.values())
+for word in words:
+    frequency_dict[word] = frequency_dict.get(word, 0) + 1
 
-foutput = open('output.txt', 'w', encoding='utf8')
-if maximal_votes > 0.5 * total_votes:
-    for name in votes_by_candidate:
-        if votes_by_candidate[name] == maximal_votes:
-            print(name, end='', file=foutput)
-else:
-    pairs = list(zip(votes_by_candidate.keys(), votes_by_candidate.values()))
-    pairs.sort(key=lambda pair: -pair[1])
-    print(pairs[0][0], file=foutput)
-    print(pairs[1][0], end='', file=foutput)
-
-foutput.close()
+# выпендримся функционально :)
+print('\n'.join([
+    pair[0]
+    for pair in sorted(
+        list(zip(frequency_dict.keys(), frequency_dict.values())),
+        key=lambda pair: (-pair[1], pair[0]))
+]))
