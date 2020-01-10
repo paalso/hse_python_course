@@ -3,13 +3,21 @@
 
 #### [План Курса](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/welcome)
 [1. Целые числа, ввод-вывод, простые операции со строками](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/1)
+
 [2. Условный оператор и цикл while](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/2)
+
 [3. Вещественные числа](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/3)
+
 [4. Функции и рекурсия](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/4)
+
 [5. Кортежи, цикл for, списки](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/5)
+
 [6. Сортировка](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/6)
+
 [7. Множества и словари](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/7)
+
 [8. Функциональное программирование](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/8)
+
 [9. Классы](https://www.coursera.org/learn/python-osnovy-programmirovaniya/home/week/9)
 
 #### Нерешенные или не вполне удовлетворительно решенные задачи:
