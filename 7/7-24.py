@@ -1,32 +1,49 @@
-# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/cA4FJ/kontrol-naia-po-udarieniiam
+# https://www.coursera.org/learn/python-osnovy-programmirovaniya/programming/LtjxX/rodoslovnaia-podschiet-urovniei
 
-# Контрольная по ударениям
+# Родословная: подсчет уровней
 
+# В генеалогическом древе у каждого человека, кроме родоначальника, есть ровно
+# один родитель. Каждом элементу дерева сопоставляется целое неотрицательное
+# число, называемое высотой. У родоначальника высота равна 0, у любого
+# другого элемента высота на 1 больше, чем у его родителя.Вам дано
+# генеалогическое древо, определите высоту всех его элементов.
 
-def count_stresses(word):
-    return len(list(filter(lambda c: c.isupper(), word)))
+# Примечания:
+# Эта задача имеет решение сложности O(n), но вам достаточнонаписать решение
+# сложности O(n²) (не считая сложности обращенияк элементам словаря)
+# Так вот - это по-видимому таки O(n²) версия!!!
 
-
-dict_words = {}
+parentage_dict = {}
+all_parents = set()
 
 with open('input.txt', 'r') as finput:
-    dict_words_qty = int(finput.readline())
-    for i in range(dict_words_qty):
-        word = finput.readline().rstrip()
-        normalized_word = word.lower()
-        dict_words.setdefault(normalized_word, []).append(word)
-    text = finput.readline()
+    n = int(finput.readline())
+    for line in finput:
+        child, parent = line.split()
+        parentage_dict[child] = parent
+        all_parents.add(parent)
 
-text_words = text.split()
+# В генеалогическом древе у каждого человека,
+# кроме родоначальника, есть ровно один родитель,
+# т.е. patriarch - это 'родоначальник'
+for parent in all_parents:
+    if parent not in parentage_dict.keys():
+        patriarch = parent
+        break
 
-errors_qty = 0
-for word in text_words:
-    normalized_word = word.lower()
-    if normalized_word not in dict_words:
-        if count_stresses(word) != 1:
-            errors_qty += 1
-        continue
-    if word not in dict_words[normalized_word]:
-        errors_qty += 1
+gen_depth_dict = {}
+for person in parentage_dict.keys():
+    depth = 0
+    child = person
+    while True:
+        parent = parentage_dict[child]
+        depth += 1
+        if parent == patriarch:
+            break
+        child = parent
+    gen_depth_dict[person] = depth
 
-print(errors_qty)
+gen_depth_dict[patriarch] = 0
+
+for person in sorted(gen_depth_dict.keys()):
+    print(person, gen_depth_dict[person])

@@ -18,6 +18,7 @@ with open('input.txt', 'r') as finput:
     text = finput.readline()
 
 text_words = text.split()
+del(text)
 
 errors_qty = 0
 for word in text_words:
