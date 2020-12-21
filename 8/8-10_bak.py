@@ -10,15 +10,24 @@
 
 import functools
 
+
+def xor(*args):
+    return functools.reduce(lambda acc, el: acc ^ el, args)
+
+
+def multy_xor(*arrays):
+    return list(map(xor, *arrays))
+
+
 print(
-    *(lambda *arrays: list(map(
-        lambda *args: functools.reduce(lambda acc, el: acc ^ el, args),
-        *arrays))
-    )
-    (
+    *multy_xor(
         *map(
             lambda s: list(map(int, s.split())),
             open('input.txt', 'r').readlines()[1:]
         )
     )
 )
+
+##FAIL:
+##Precompile check failed:
+##not functional enough
